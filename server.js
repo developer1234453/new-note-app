@@ -24,7 +24,7 @@ const PORT = process.env.PORT || 5000;
 
 
 // MongoDB connection
-const db = "mongodb://localhost:27017/NEW-NOTES-PACK"; 
+const db = "mongodb://localhost:127.0.1/NEW-NOTES-PACK";  
 mongoose.connect(db)
   .then(() =>{ 
     console.log('MongoDB connected')
