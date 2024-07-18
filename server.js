@@ -25,7 +25,7 @@ const PORT = process.env.PORT || 5000;
 
 // MongoDB connection
 const db = "mongodb://localhost:27017/NEW-NOTES-PACK"; 
-mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(db)
   .then(() =>{ 
     console.log('MongoDB connected')
   app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
