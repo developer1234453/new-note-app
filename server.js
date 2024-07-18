@@ -19,18 +19,20 @@ app.use('/api/notes', noteRoutes);
 app.get('/', (req, res) => {
   res.send('API is running...');
 });
+
 const PORT = process.env.PORT || 5000;
-
-
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/NEW-NOTES-PACK';
 
 // MongoDB connection
-const db = "mongodb://localhost:27017/NEW-NOTES-PACK";  
-mongoose.connect(db)
-  .then(() =>{ 
-    console.log('MongoDB connected')
+mongoose.connect(MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => {
+  console.log('MongoDB connected');
   app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 })
-  .catch(err => {
-    console.log(err);
-  process.exit(1);
-})
+.catch((err) => {
+  console.error('Error connecting to MongoDB:', err.message);
+  process.exit(1); // Exit the process if MongoDB connection fails
+});
