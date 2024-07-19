@@ -21,21 +21,10 @@ app.get('/', (req, res) => {
 });
 
 const PORT = process.env.PORT || 5000;
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://myUser:myPassword@localhost:27017/myDatabase';
-
-console.log(`Connecting to MongoDB at ${MONGODB_URI}`);
-
-// Ensure MONGODB_URI starts with the correct scheme
-if (!/^mongodb(\+srv)?:\/\//.test(MONGODB_URI)) {
-  console.error('Invalid MongoDB URI scheme. It must start with "mongodb://" or "mongodb+srv://".');
-  process.exit(1);
-}
+let  MONGODB_URI = 'mongodb://localhost:27017/NEW-NOTES-PACK';
 
 // MongoDB connection
-mongoose.connect(MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
+mongoose.connect(MONGODB_URI)
 .then(() => {
   console.log('MongoDB connected');
   app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
